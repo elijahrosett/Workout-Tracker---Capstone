@@ -25,6 +25,7 @@ class Workout(models.Model):
     movement = models.ForeignKey(Movements, on_delete=models.CASCADE)
     sets = models.IntegerField()
     reps = models.IntegerField()
+    date = models.DateField(null=True)
     def __str__(self):
         return self.name
     

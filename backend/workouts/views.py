@@ -16,18 +16,18 @@ def get_all_workouts(request):
     return Response(serializer.data)
 
 
-# @api_view(['GET', 'POST'])
-# @permission_classes([IsAuthenticated])
-# def user_workouts(request):
-#     print(
-#         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
-#     if request.method == 'POST':
-#         serializer = Full_WorkoutSerializer(data=request.data)
-#         if serializer.is_valid():
-#             serializer.save(user=request.user)
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-#     elif request.method == 'GET':
-#         cars = Car.objects.filter(user_id=request.user.id)
-#         serializer = CarSerializer(cars, many=True)
-#         return Response(serializer.data)
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+def user_workouts(request):
+    print(
+        'User ', f"{request.user.id} {request.user.email} {request.user.username}")
+    if request.method == 'POST':
+        serializer = WorkoutSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'GET':
+        workouts = Workout.objects.filter(user_id=request.user.id)
+        serializer = WorkoutSerializer(workouts, many=True)
+        return Response(serializer.data)

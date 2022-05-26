@@ -5,7 +5,7 @@ from .models import *
 class WorkoutSerializer(serializers.ModelSerializer):
     class Meta:
         model = Workout
-        fields = ['name', 'muscle_group', 'movement', 'sets', 'reps']
+        fields = ['name', 'muscle_group', 'movement', 'sets', 'reps', 'date']
         depth = 1
 
 class MovementsSerializer(serializers.ModelSerializer):
