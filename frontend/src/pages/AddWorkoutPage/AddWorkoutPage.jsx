@@ -3,8 +3,23 @@ import useAuth from "../../hooks/useAuth";
 import { useNavigate, Link } from "react-router-dom";
 import useCustomForm from "../../hooks/useCustomForm";
 import axios from "axios";
+import { useState } from "react/cjs/react.production.min";
+import DropDown from "../../components/Dropdown/Dropdown";
 
 
+const items= [
+    {id: 1, value: 'Legs'},
+    
+    {id: 2, value: 'Arms'},
+    
+    {id: 1, value: 'Shoulders'},
+    
+    {id: 1, value: 'Chest'},
+
+    {id: 1, value: 'Abs'},
+
+  ]
+  
 let initialValues = {
     "name": "",
     "muscle_group":"" ,
@@ -14,7 +29,7 @@ let initialValues = {
     "date": ""
 }
 
-const AddWorkoutPage = () => {
+const AddWorkoutPage = (props) => {
     const [user, token] = useAuth()
     const navigate = useNavigate()
     const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewWorkout)
@@ -47,6 +62,7 @@ const AddWorkoutPage = () => {
                 </label>
                 <label>
                     Muscle Group:{""}
+                    {/* <DropDown title="Select a muscle Group" items={items} /> */}
                     <input 
                     type="text"
                     name="muscle_group"

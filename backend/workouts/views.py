@@ -16,6 +16,13 @@ def get_all_workouts(request):
     serializer = WorkoutSerializer(workouts, many=True)
     return Response(serializer.data)
 
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_all_muscle_groups(request):
+    muscle_groups = Muscle_Groups.objects.all()
+    serializer = Muscle_GroupSerializer(muscle_groups, many=True)
+    return Response(serializer.data)
+
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
