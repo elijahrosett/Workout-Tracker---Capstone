@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import Workout
 from .serializers import *
+from django.shortcuts import get_object_or_404
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 
@@ -31,3 +32,21 @@ def user_workouts(request):
         workouts = Workout.objects.filter(user_id=request.user.id)
         serializer = WorkoutSerializer(workouts, many=True)
         return Response(serializer.data)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([AllowAny]) 
+def workout_by_detail(request, pk):
+    workout = get_object_or_404(Workout, pk=pk)
+    if request.method == "GET":
+        # workouts = Workout.objects.filter(video_id=pk)
+        serializer = WorkoutSerializer(workout, many=True)
+        return Response(serializer.data)
+    elif request.method == 'PUT':
+        # workout = get_object_or_404(Workout, pk=pk)
+        serializer = WorkoutSerializer(workout, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    elif request.method == 'DELETE':
+        workout.delete
+        return Response(status=status.HTTP_204_NO_CONTENT)
