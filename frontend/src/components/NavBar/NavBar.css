@@ -9,7 +9,7 @@ li {
 }
 
 .navBar {
-  background: steelblue;
+  background: rgb(56, 112, 243);
   box-shadow: 4px 2px 5px gray;
   color: white;
   margin-bottom: 2rem;
@@ -25,7 +25,7 @@ li {
 
 .navBar button:hover {
   background: white;
-  color: steelblue;
+  color: rgb(56, 112, 243);
   cursor: pointer;
 }
 

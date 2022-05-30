@@ -17,6 +17,7 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import WorkoutHistory from "./pages/WorkoutHistory/WorkoutHistory";
 
 
 function App() {
@@ -36,6 +37,8 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="dropdown" element={<Dropdown/>} />
         <Route path="addworkout" element={<PrivateRoute><AddWorkoutPage /></PrivateRoute>} />
+        <Route path="workouthistory" element={<PrivateRoute><WorkoutHistory /></PrivateRoute>} />
+
       </Routes>
       <Footer />
     </div>
