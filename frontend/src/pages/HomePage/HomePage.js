@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 
 import axios from "axios";
-import DropDown from "../../components/Dropdown/Dropdown";
+import Dropdown2 from "../../components/Dropdown2/Dropdown2";
 import AddWorkoutPage from "../AddWorkoutPage/AddWorkoutPage";
 
 const HomePage = () => {
@@ -12,11 +12,11 @@ const HomePage = () => {
     
     {id: 2, value: 'Arms'},
     
-    {id: 1, value: 'Shoulders'},
+    {id: 3, value: 'Shoulders'},
     
-    {id: 1, value: 'Chest'},
+    {id: 4, value: 'Chest'},
 
-    {id: 1, value: 'Abs'},
+    {id: 5, value: 'Abs'},
 
   ]
   
@@ -27,7 +27,7 @@ const HomePage = () => {
   return (
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
-      <DropDown title="select a muscle group" items={items} />
+      
       
       
          

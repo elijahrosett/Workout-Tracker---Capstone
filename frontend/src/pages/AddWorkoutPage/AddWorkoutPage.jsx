@@ -4,19 +4,19 @@ import { useNavigate, Link } from "react-router-dom";
 import useCustomForm from "../../hooks/useCustomForm";
 import axios from "axios";
 import { useState } from "react/cjs/react.production.min";
-import DropDown from "../../components/Dropdown/Dropdown";
+import Dropdown2 from "../../components/Dropdown2/Dropdown2";
 
 
-const items= [
+const muscleGroup= [
     {id: 1, value: 'Legs'},
     
     {id: 2, value: 'Arms'},
     
-    {id: 1, value: 'Shoulders'},
+    {id: 3, value: 'Shoulders'},
     
-    {id: 1, value: 'Chest'},
+    {id: 4, value: 'Chest'},
 
-    {id: 1, value: 'Abs'},
+    {id: 5, value: 'Abs'},
 
   ]
   
@@ -60,16 +60,18 @@ const AddWorkoutPage = (props) => {
                     onChange={handleInputChange}
                 />
                 </label>
-                <label>
+                <div>
+                
                     Muscle Group:{""}
-                    {/* <DropDown title="Select a muscle Group" items={items} /> */}
-                    <input 
-                    type="text"
+                    <Dropdown2/>
+                     
+                    {/* type="text"
                     name="muscle_group"
                     value={formData.muscle_group}
-                    onChange={handleInputChange}
-                />
-                </label>
+                    onChange={handleInputChange} */}
+                
+                
+                </div>
                 <label>
                     Movement:{""}
                     <input 
