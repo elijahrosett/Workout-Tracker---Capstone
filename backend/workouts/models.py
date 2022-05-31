@@ -19,7 +19,6 @@ class Movements(models.Model):
 
 
 class Workout(models.Model):
-    name = models.CharField(max_length=200, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     muscle_group = models.ForeignKey(Muscle_Groups, on_delete=models.CASCADE )
     movement = models.ForeignKey(Movements, on_delete=models.CASCADE)

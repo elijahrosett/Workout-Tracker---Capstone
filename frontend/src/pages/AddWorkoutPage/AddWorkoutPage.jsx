@@ -14,7 +14,7 @@ import React, { useState, useEffect } from 'react';
 
   
 let initialValues = {
-    "name": "",
+    
     "muscle_group":"" ,
     "movement": "",
     "reps": "",
@@ -77,15 +77,7 @@ const AddWorkoutPage = (props) => {
     return ( 
         <div className="container">
             <form className="form" onSubmit={handleSubmit}>
-                <label>
-                    Name:{""}
-                    <input 
-                    type="select"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                />
-                </label>
+    
                 <label>
                     <select id='ddMuscleGroup' name="muscle_group" 
                     className="form-control select-class"  onChange={e => { handleMuscleGroup(e.target.value); handleInputChange(e)} } >
