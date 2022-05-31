@@ -54,12 +54,12 @@ const AddWorkoutPage = (props) => {
     const handleMuscleGroup = (id) => {
         console.log(id)
         const dt = movements.filter(x => x.muscleGroupId === id);
-        id = formData.muscle_group
         setMovement(dt);
         console.log(dt);
         
     }
 
+   
     async function postNewWorkout(){
         try {
             let response = await axios.post("http://127.0.0.1:8000/api/workout/", formData, {
@@ -88,7 +88,7 @@ const AddWorkoutPage = (props) => {
                 </label>
                 <label>
                     <select id='ddMuscleGroup' name="muscle_group" 
-                    className="form-control select-class"  onChange={(event) => handleMuscleGroup(event.target.value)}>
+                    className="form-control select-class"  onChange={e => { handleMuscleGroup(e.target.value); handleInputChange(e)} } >
                 <option value="0">Select Muscle Group</option>
                 {
                     muscleGroup &&
