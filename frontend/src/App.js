@@ -21,7 +21,12 @@ import WorkoutHistory from "./pages/WorkoutHistory/WorkoutHistory";
 import Dropdown2 from "./components/Dropdown2/Dropdown2";
 
 
+
+
+
 function App() {
+
+
   return (
     <div>
       <Navbar />

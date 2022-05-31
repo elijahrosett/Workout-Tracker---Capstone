@@ -143,7 +143,7 @@ const AddWorkoutPage = (props) => {
                 />
                 </label>
                 <button>Add Workout!</button>
-                {console.log(formData)}
+                
             </form>
 
         </div>
