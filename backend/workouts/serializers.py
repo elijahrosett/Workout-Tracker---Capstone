@@ -6,7 +6,7 @@ class WorkoutSerializer(serializers.ModelSerializer):
     class Meta:
         model = Workout
         fields = ['id', 'muscle_group', 'movement', 'sets', 'reps', 'date']
-        # depth = 1
+        depth = 1
 
 class MovementsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -18,6 +18,7 @@ class Muscle_GroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Muscle_Groups
         fields = ['name']
+        depth = 1
 
 class Full_WorkoutSerializer(serializers.ModelSerializer):
     class Meta:
