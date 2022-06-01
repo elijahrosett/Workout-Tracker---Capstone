@@ -27,6 +27,7 @@ const AddWorkoutPage = (props) => {
     const [movement, setMovement] = useState([]);
     const [user, token] = useAuth()
     const navigate = useNavigate()
+    
     const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewWorkout)
     const muscleGroups = [
         { id: "1", name: 'Legs' },
@@ -50,6 +51,10 @@ const AddWorkoutPage = (props) => {
     useEffect(() => {
         setMuscleGroup(muscleGroups);
     }, [])
+
+    function filter(filter){
+
+    }
 
     const handleMuscleGroup = (id) => {
         console.log(id)

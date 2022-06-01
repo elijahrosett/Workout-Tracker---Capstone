@@ -25,8 +25,8 @@ class Workout(models.Model):
     sets = models.IntegerField()
     reps = models.IntegerField()
     date = models.DateField(null=True)
-    def __str__(self):
-        return self.name
+    def __all__(self):
+        return self.date
     
     
 

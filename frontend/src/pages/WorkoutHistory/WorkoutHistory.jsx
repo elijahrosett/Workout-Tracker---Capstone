@@ -1,58 +1,23 @@
 import axios from "axios";
 import React, { useEffect, useState } from 'react';
+import DateFilter from "../../components/DateFilter/DateFilter";
+import DisplayWorkoutHistory from "../../components/DisplayWorkoutHistory/DisplayWorkoutHistory";
 import useAuth from "../../hooks/useAuth";
 
 
-const WorkoutHistory = () => {
-    const [userWorkouts, setUserWorkouts] = useState([])
-    const [user, token] = useAuth();
 
-    async function fetchAllUserWorkouts() {
-        try {
-            let response = await axios.get('http://127.0.0.1:8000/api/workout/', {
-                headers: {
-                    Authorization: "Bearer " + token,
-                },
-            });
-            setUserWorkouts(response.data);
-            console.log(response.data)
-        }
-        catch (ex) {
-            console.log('there is an error', ex)
-        }
-    }
-    useEffect(() => {
-        fetchAllUserWorkouts();
-    }, [])
-
+const WorkoutHistory = (props) => {
+    const [filteredWorkouts, setFilteredWorkouts] = useState([])
+   
+    
+   
 
     return (
-        <table className="table" >
-                <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col">Muscle Group</th>
-                    <th scope="col">Movement</th>
-                    <th scope="col">Sets</th>
-                    <th scope="col">Reps</th>
-                </tr>
-            <tbody>
-                {userWorkouts.map((workout, index) => {
-                    return (
+     <div>
+         <DateFilter userWorkouts={props.userWorkouts} filterResults={props.filterResults} setFilteredWorkouts={props.setFilteredWorkouts} />
+         <DisplayWorkoutHistory userWorkouts={props.userWorkouts} filterResults={props.filterResults} setFilteredWorkouts={props.setFilteredWorkouts} />
 
-                        <tr key={index}>
-                            <td>{workout.date}</td>
-                            <td>{workout.muscle_group.name}</td>
-                            <td>{workout.movement.name}</td>
-                            <td>{workout.sets}</td>
-                            <td>{workout.reps}</td>
-                        
-                        </tr>
-                    )
-                }
-                )}
-
-            </tbody>
-        </table>
+        </div>
     );
 }
 
