@@ -17,14 +17,14 @@ class WorkoutPostSerializer(serializers.ModelSerializer):
 class MovementsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movements
-        fields = ['name', 'muscle_group']
+        fields = ['id', 'name', 'muscle_group']
        
 
 class Muscle_GroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Muscle_Groups
-        fields = ['name']
-        depth = 1
+        fields = ['id', 'name']
+        
 
 class Full_WorkoutSerializer(serializers.ModelSerializer):
     class Meta:
