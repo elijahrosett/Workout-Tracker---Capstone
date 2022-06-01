@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 
 const DateFilter = (props) => {
-    const [startDate, setStartfilter] = useState("0000-00-00")
-    const [endDate, setEndfilter] = useState("9999-99-99")
+    const [startDate, setStartfilter] = useState()
+    const [endDate, setEndfilter] = useState()
 
 
     function handleSubmit(event){
