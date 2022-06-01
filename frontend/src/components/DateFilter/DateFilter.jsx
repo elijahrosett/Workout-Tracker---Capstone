@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 
 const DateFilter = (props) => {
     const [startDate, setStartfilter] = useState("0000-00-00")
@@ -18,10 +19,17 @@ const DateFilter = (props) => {
             return el.date <= endDate &&
                 el.date >= startDate;
         });
-        console.log(newArray)
+        console.log(newArray);
+        props.setUserWorkouts(newArray);
+    }
+    function resetFilter(){
+        props.fetchAllUserWorkouts()
     }
 
-
+    useEffect(() => {
+        props.fetchAllUserWorkouts();
+        
+    }, [startDate, endDate])
     return (
         <form onSubmit={handleSubmit} >
             <h1>Workout history</h1>
@@ -35,6 +43,7 @@ const DateFilter = (props) => {
                 />
             </div>
             <button type='submit' >Filter</button>
+            <button onClick={resetFilter}>Reset</button>
         </form>
 
     );

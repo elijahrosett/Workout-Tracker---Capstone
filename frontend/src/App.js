@@ -69,7 +69,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="dropdown2" element={<Dropdown2/>} />
         <Route path="addworkout" element={<PrivateRoute><AddWorkoutPage /></PrivateRoute>} />
-        <Route path="workouthistory" element={<PrivateRoute><WorkoutHistory userWorkouts={userWorkouts}  /></PrivateRoute>} />
+        <Route path="workouthistory" element={<PrivateRoute><WorkoutHistory userWorkouts={userWorkouts} setUserWorkouts={setUserWorkouts} fetchAllUserWorkouts={fetchAllUserWorkouts} /></PrivateRoute>} />
         
       </Routes>
       <Footer />
