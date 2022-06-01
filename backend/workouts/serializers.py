@@ -1,13 +1,19 @@
+from asyncore import read
 from rest_framework import serializers
 from .models import *
 
 
-class WorkoutSerializer(serializers.ModelSerializer):
+class WorkoutGetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Workout
         fields = ['id', 'muscle_group', 'movement', 'sets', 'reps', 'date']
         depth = 1
-
+class WorkoutPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Workout
+        fields = ['muscle_group', 'movement', 'sets', 'reps', 'date']
+        
+       
 class MovementsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movements
