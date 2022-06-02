@@ -12,6 +12,9 @@ const WorkoutHistory = (props) => {
     
     const [startDate, setStartfilter] = useState(moment().format("YYYY-MM-DD"))
     const [endDate, setEndFilter] = useState(moment().format("YYYY-MM-DD"))
+    const [daysWorkedOut, setDaysWorkedOut] = useState([""])
+    const [dayRange, setDayRange] = useState(["90"])
+    const [nonWorkoutDays, setNonWorkoutDays] = useState([])
     
    
     
@@ -19,9 +22,9 @@ const WorkoutHistory = (props) => {
 
     return (
      <div>
-        <DateFilter startDate={startDate} setStartfilter={setStartfilter} endDate={endDate} setEndFilter={setEndFilter} userWorkouts={props.userWorkouts} filterResults={props.filterResults} setFilteredWorkouts={props.setFilteredWorkouts} setUserWorkouts={props.setUserWorkouts} fetchAllUserWorkouts={props.fetchAllUserWorkouts} />
-        <DisplayWorkoutHistory userWorkouts={props.userWorkouts} filterResults={props.filterResults} setFilteredWorkouts={props.setFilteredWorkouts} />
-        <WorkoutGraphs endDate={endDate} startDate={startDate} userWorkouts={props.userWorkouts} />
+        <DateFilter daysWorkedOut={daysWorkedOut} setDayRange={setDayRange} startDate={startDate} setStartfilter={setStartfilter} endDate={endDate} setEndFilter={setEndFilter} userWorkouts={props.userWorkouts} filterResults={props.filterResults} setFilteredWorkouts={props.setFilteredWorkouts} setUserWorkouts={props.setUserWorkouts} fetchAllUserWorkouts={props.fetchAllUserWorkouts} />
+        <DisplayWorkoutHistory dayRange={dayRange} daysWorkedOut={daysWorkedOut} userWorkouts={props.userWorkouts} filterResults={props.filterResults} setFilteredWorkouts={props.setFilteredWorkouts} />
+        <WorkoutGraphs nonWorkoutDays={nonWorkoutDays} setDaysWorkedOut={setDaysWorkedOut} setNonWorkoutDays={setNonWorkoutDays} daysWorkedOut={daysWorkedOut} setDayRange={setDayRange} dayRange={dayRange} endDate={endDate} startDate={startDate} userWorkouts={props.userWorkouts} />
         </div>
     );
 }

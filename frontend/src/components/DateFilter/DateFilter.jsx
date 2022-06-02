@@ -21,22 +21,26 @@ const DateFilter = (props) => {
     function filterWorkouts(e) {
         if (e == 24){
             var newArray = props.userWorkouts.filter(function (el) {
+                props.setDayRange(1)
                 return el.date <= props.endDate &&
                     el.date >= moment().subtract(1, 'days').format("YYYY-MM-DD")        
             });}
         else if (e == 7){
             var newArray = props.userWorkouts.filter(function (el) {
+                props.setDayRange(7)
                 return el.date <= props.endDate &&
                     el.date >= moment().subtract(7, 'days').format("YYYY-MM-DD")            
             });}
         else if (e == 30){
             var newArray = props.userWorkouts.filter(function (el) {
+                props.setDayRange(30)
                 return el.date <= props.endDate &&
                     el.date >= moment().subtract(30, 'days').format("YYYY-MM-DD");
                        
             });}
         else if (e == 90){
             var newArray = props.userWorkouts.filter(function (el) {
+                props.setDayRange(90)
                 return el.date <= props.endDate &&
                     el.date >= moment().subtract(90, 'days').format("YYYY-MM-DD")
             });}
