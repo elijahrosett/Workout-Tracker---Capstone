@@ -4,16 +4,7 @@ import React, { useState, useEffect } from 'react';
 
 const WorkoutGraphs = (props) => {
   const [daysWorkedOut, setDaysWorkedOut] = useState([])
-  async function countDays(){
-    let days = props.userWorkouts.length
-    console.log(days)
-    setDaysWorkedOut(days)
-    console.log(daysWorkedOut)
-  }
-   useEffect(() =>{
-     countDays();
-   }, [props.userWorkouts])
-
+  const [daysNotWorkedOut, setDaysNotWorkedOut] = useState([])
 
 
     return (
