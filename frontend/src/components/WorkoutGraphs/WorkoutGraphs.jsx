@@ -8,14 +8,12 @@ const WorkoutGraphs = (props) => {
   function daysNotWorkedOut(timePeriod, Workouts){
     let nonWorkouts = timePeriod - Workouts;
     props.setNonWorkoutDays(nonWorkouts);
-    console.log(nonWorkouts)
   }
 
 
   function daysWorkedOut(workoutArray){
     let daysWorkedOut = workoutArray.map(item => item.date)
     .filter((value, index, self) => self.indexOf(value) === index)
-    console.log(daysWorkedOut.length);
     props.setDaysWorkedOut(daysWorkedOut.length)
 
   }

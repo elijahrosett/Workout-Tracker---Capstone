@@ -94,6 +94,7 @@ const EditWorkout = (props) => {
             movement: editArray.movement,
             sets: editArray.sets ,
             reps: editArray.reps ,
+            weight: editArray.weight,
             date: editArray.date 
         };
         console.log(newWorkout)
@@ -142,6 +143,15 @@ const EditWorkout = (props) => {
                                 : "No movement"
                         }
                     </select>
+                </label>
+                <label>
+                    Weight:{""}
+                    <input
+                        type="text"
+                        name="weight"
+                        value={editArray.weight}
+                        onChange={handleInputChange}
+                    />
                 </label>
                 <label>
                     Reps:{""}

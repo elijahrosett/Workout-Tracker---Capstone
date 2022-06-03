@@ -4,13 +4,17 @@ import React, { useState, useEffect } from 'react';
 const WeightGraph = (props) => {
     const [chartData, setChartData] = useState([])
     const [legWorkouts, setLegsWorkouts] = useState([])
+    const [legWeights, setLegWeights] = useState([])
     const [legGraphArray, setLegGraphArray] = useState([])
     const [armWorkouts, setArmWorkouts] = useState([])
 
-    useEffect(() => {
-        
+   
+    function average(array){
+        let average = array.reduce()/array.length;
+        console.log(average) 
 
-    },[])
+    } 
+    
 
     useEffect(() => {
         let legWeight = props.userWorkouts.filter(function(workout){
@@ -18,7 +22,7 @@ const WeightGraph = (props) => {
          })
         setLegsWorkouts(legWeight);
         console.log(legWorkouts)
-     },[])
+     },[props.userWorkouts])
 
     useEffect(() =>{
         let tempData = props.userWorkouts.map(entry => {
@@ -33,11 +37,14 @@ const WeightGraph = (props) => {
 
      const data = [
         ["Date", "Legs", "Arms", "Back", "Shoulders", "Chest", "Abs"],
-        ["2021-06-01", 1000, 400, 200, 500, 750, 150],
-        ["2021-06-02", 1170, 460, 250, 500, 750, 150],
-        ["2021-06-03", 660, 1120, 300, 500, 750, 150],
-        ["2021-06-04", 1030, 540, 350, 500, 750, 150],
-      ];
+        [, 1000, 400, 200, 500, 750, 150],
+     ]
+
+      useEffect(() => {
+        let totalWeight = legWorkouts.map(workout =>  workout.weight * workout.sets * workout.reps);
+        console.log(totalWeight);
+        setLegWeights(totalWeight);
+    },[legWorkouts])
 
     
     return (
