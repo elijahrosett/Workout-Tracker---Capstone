@@ -7,14 +7,6 @@ import React, { useState, useEffect } from 'react';
 
 
 
-let initialValues = {
-
-    "muscle_group": "",
-    "movement": "",
-    "sets": "",
-    "reps": "",
-    "date": ""
-}
 
 
 const EditWorkout = (props) => {
@@ -95,7 +87,8 @@ const EditWorkout = (props) => {
             sets: editArray.sets ,
             reps: editArray.reps ,
             weight: editArray.weight,
-            date: editArray.date 
+            date: editArray.date,
+            total_weight: editArray.sets * editArray.weight * editArray.reps
         };
         console.log(newWorkout)
         setEditArray(newWorkout)

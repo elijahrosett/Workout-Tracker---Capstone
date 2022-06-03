@@ -25,6 +25,8 @@ const navigate = useNavigate()
                     <th scope="col">Sets</th>
                     <th scope="col">Reps</th>
                     <th scope="col">Weight</th>
+                    <th scope="col">Total Weight</th>
+                    
 
                 </tr>
             <tbody>
@@ -38,6 +40,8 @@ const navigate = useNavigate()
                             <td>{workout.sets}</td>
                             <td>{workout.reps}</td>
                             <td>{workout.weight}</td>
+                            <td>{workout.total_weight}</td>
+                            
                             <button value={workout} onClick={() => handleClick(workout)}>Edit</button>
                             <td><button value={workout} onClick={() => props.handleDelete(workout)}>Delete</button></td>
                             

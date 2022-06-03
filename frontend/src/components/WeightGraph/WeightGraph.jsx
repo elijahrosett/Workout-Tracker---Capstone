@@ -37,7 +37,7 @@ const WeightGraph = (props) => {
 
      const data = [
         ["Date", "Legs", "Arms", "Back", "Shoulders", "Chest", "Abs"],
-        [, 1000, 400, 200, 500, 750, 150],
+        ["2022-06-01", ...legWeights , 400, 200, 500, 750, 150],
      ]
 
       useEffect(() => {

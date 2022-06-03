@@ -6,12 +6,12 @@ from .models import *
 class WorkoutGetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Workout
-        fields = ['id', 'muscle_group', 'movement', 'sets', 'reps', 'weight','date']
+        fields = ['id', 'muscle_group', 'movement', 'sets', 'reps', 'weight', 'total_weight', 'date']
         depth = 1
 class WorkoutPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Workout
-        fields = ['muscle_group', 'movement', 'sets', 'reps', 'weight', 'date']
+        fields = ['muscle_group', 'movement', 'sets', 'reps', 'weight', 'total_weight', 'date']
         
        
 class MovementsSerializer(serializers.ModelSerializer):

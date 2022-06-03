@@ -25,6 +25,7 @@ class Workout(models.Model):
     sets = models.IntegerField()
     reps = models.IntegerField()
     weight = models.IntegerField(null=True)
+    total_weight = models.IntegerField(null=True)
     date = models.DateField(null=True)
     def __all__(self):
         return self.date

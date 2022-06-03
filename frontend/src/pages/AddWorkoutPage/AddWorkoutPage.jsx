@@ -13,7 +13,8 @@ let initialValues = {
     "sets": "",
     "reps": "",
     "weight": '',
-    "date": ""
+    "date": "",
+    "total_weight": ""
 }
 
 const AddWorkoutPage = (props) => {
@@ -24,6 +25,7 @@ const AddWorkoutPage = (props) => {
     const [muscleGroups, setMuscleGroups ] = useState([])
     const [movements, setMovements] = useState([])
     const [filteredMovements, setFilteredMovements] =useState([])
+    const [totalWeight, setTotalWeight] =useState([])
    
 
     async function fetchMuscleGroups() {
@@ -84,6 +86,13 @@ const AddWorkoutPage = (props) => {
         console.log("fetch movements")
       }, [])
 
+    function handleWeight(){
+        let totalWeight = formData.weight * formData.reps * formData.sets;
+        console.log(totalWeight)
+        setTotalWeight(totalWeight)
+        
+    }
+    
 
     return ( 
         <div className="container">
@@ -160,9 +169,17 @@ const AddWorkoutPage = (props) => {
                     name="date"
                     value={formData.date}
                     onChange={handleInputChange}
+                    
                 />
                 </label>
-                <button>Add Workout!</button>
+                    Total Weight: {totalWeight}
+                    <input type="text"
+                    name="weight"
+                    value={formData.total_weight}
+
+                />
+                <button onClick={handleWeight} name="weight"
+                    value={formData.total_weight}>Add Workout!</button>
                 
             </form>
 
