@@ -57,10 +57,11 @@ const EditWorkout = (props) => {
     }
 
 
-    async function updateWorkout(pk) {
+    async function updateWorkout(pk, array) {
         try {
-            let response = await axios.put(`http://127.0.0.1:8000/api/workout/${pk}/`, editArray
+            let response = await axios.put(`http://127.0.0.1:8000/api/workout/${pk}/`, array
             );
+            console.log(response)
             navigate('/')
 
         } catch (error) {
@@ -90,9 +91,9 @@ const EditWorkout = (props) => {
             date: editArray.date,
             total_weight: editArray.sets * editArray.weight * editArray.reps
         };
-        console.log(newWorkout)
-        setEditArray(newWorkout)
-        updateWorkout(props.editInfo.id)
+        console.log(newWorkout);
+        console.log(editArray)
+        updateWorkout(props.editInfo.id, newWorkout);
     }
 
     return (
