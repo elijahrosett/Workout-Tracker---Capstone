@@ -61,5 +61,5 @@ def workout_by_detail(request, pk):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == 'DELETE':
-        workout.delete
+        workout.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

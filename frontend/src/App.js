@@ -22,6 +22,7 @@ import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./utils/PrivateRoute";
 import useAuth from "./hooks/useAuth";
 import DisplayWorkoutHistory from "./components/DisplayWorkoutHistory/DisplayWorkoutHistory";
+import EditWorkout from "./components/EditWorkout/EditWorkout";
 
 
 
@@ -31,6 +32,7 @@ import DisplayWorkoutHistory from "./components/DisplayWorkoutHistory/DisplayWor
 function App() {
   const [userWorkouts, setUserWorkouts] = useState([])
   const [user, token] = useAuth();
+  const [editInfo, setEditInfo] = useState([])
 
   async function fetchAllUserWorkouts() {
       try {
@@ -47,7 +49,29 @@ function App() {
       }
   }
 
+  async function handleDelete(pk) {
+    try {
+        let response = await axios.delete(`http://127.0.0.1:8000/api/workout/${pk.id}/`
+         );
+        console.log(response, `deleted id " ${pk}`)
+        fetchAllUserWorkouts();
+    }
+    catch (ex) {
+        console.log('there is an error', ex)
+    }
+}
 
+async function handleEdit(pk) {
+  try {
+      let response = await axios.put(`http://127.0.0.1:8000/api/workout/${pk}/`
+       );
+      console.log(response)
+      fetchAllUserWorkouts();
+  }
+  catch (ex) {
+      console.log('there is an error', ex)
+  }
+}
 
   useEffect(() => {
     fetchAllUserWorkouts();
@@ -69,7 +93,9 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="dropdown2" element={<Dropdown2/>} />
         <Route path="addworkout" element={<PrivateRoute><AddWorkoutPage /></PrivateRoute>} />
-        <Route path="workouthistory" element={<PrivateRoute><WorkoutHistory userWorkouts={userWorkouts} setUserWorkouts={setUserWorkouts} fetchAllUserWorkouts={fetchAllUserWorkouts} /></PrivateRoute>} />
+        <Route path="workouthistory"  element={<PrivateRoute><WorkoutHistory editInfo={editInfo} setEditInfo={setEditInfo} handleEdit={handleEdit} handleDelete={handleDelete} userWorkouts={userWorkouts} setUserWorkouts={setUserWorkouts} fetchAllUserWorkouts={fetchAllUserWorkouts} /></PrivateRoute>} />
+        <Route path="edit" element={<PrivateRoute><EditWorkout editInfo={editInfo}  /></PrivateRoute>} />
+        
         
       </Routes>
       <Footer />

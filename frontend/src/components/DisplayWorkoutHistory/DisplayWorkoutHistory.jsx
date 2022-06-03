@@ -1,6 +1,19 @@
-const DisplayWorkoutHistory = (props) => {
-    
+import EditWorkout from "../EditWorkout/EditWorkout";
+import { Link, Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
+
+
+
+const DisplayWorkoutHistory = (props) => {
+const navigate = useNavigate()
+    
+ function handleClick(workout){
+    props.setEditInfo(workout)
+    navigate("/edit")
+    console.log(workout)
+
+ }
 
 
     return ( 
@@ -22,6 +35,9 @@ const DisplayWorkoutHistory = (props) => {
                             <td>{workout.movement.name}</td>
                             <td>{workout.sets}</td>
                             <td>{workout.reps}</td>
+                            <button value={workout} onClick={() => handleClick(workout)}>Edit</button>
+                            <td><button value={workout} onClick={() => props.handleDelete(workout)}>Delete</button></td>
+                            
                         
                         </tr>
                     )

@@ -6,13 +6,6 @@ import axios from "axios";
 import React, { useState, useEffect } from 'react';
 
 
-
-
-
-
-
-
-  
 let initialValues = {
     
     "muscle_group":"" ,
@@ -59,19 +52,15 @@ const AddWorkoutPage = (props) => {
       fetchMovements();
   }, [])
 
-
-
     const handleMuscleGroup = (id) => {
         console.log(id)
         console.log(movements)
         const dt = movements.filter(x => x.muscle_group == id);
         setMovements(dt);
         console.log(dt);
-        
-        
     }
 
-   
+
     async function postNewWorkout(){
         try {
             let response = await axios.post("http://127.0.0.1:8000/api/workout/", formData, {
@@ -128,7 +117,7 @@ const AddWorkoutPage = (props) => {
             </select>
                 </label>
                 <label>
-                    reps:{""}
+                    Reps:{""}
                     <input 
                     type="text"
                     name="reps"
