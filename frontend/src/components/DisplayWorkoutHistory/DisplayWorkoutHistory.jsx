@@ -24,6 +24,8 @@ const navigate = useNavigate()
                     <th scope="col">Movement</th>
                     <th scope="col">Sets</th>
                     <th scope="col">Reps</th>
+                    <th scope="col">Weight</th>
+
                 </tr>
             <tbody>
                 {props.userWorkouts.map((workout, index) => {
@@ -35,6 +37,7 @@ const navigate = useNavigate()
                             <td>{workout.movement.name}</td>
                             <td>{workout.sets}</td>
                             <td>{workout.reps}</td>
+                            <td>{workout.weight}</td>
                             <button value={workout} onClick={() => handleClick(workout)}>Edit</button>
                             <td><button value={workout} onClick={() => props.handleDelete(workout)}>Delete</button></td>
                             

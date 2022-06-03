@@ -32,7 +32,7 @@ const WorkoutGraphs = (props) => {
 
 <Chart
   chartType="PieChart"
-  data={[["Days with a workout", "Days without a workout"], ["Workouts completed", props.daysWorkedOut], [`in the past ${props.dayRange} days`, props.nonWorkoutDays]]}
+  data={[["Days with a workout", "Days without a workout"], ["`Days with a workout", props.daysWorkedOut], [`Days without a workout (Past ${props.dayRange} days)`, props.nonWorkoutDays]]}
   width="100%"
   height="400px"
   

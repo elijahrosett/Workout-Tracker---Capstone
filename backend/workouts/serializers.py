@@ -1,4 +1,4 @@
-from asyncore import read
+
 from rest_framework import serializers
 from .models import *
 
@@ -6,12 +6,12 @@ from .models import *
 class WorkoutGetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Workout
-        fields = ['id', 'muscle_group', 'movement', 'sets', 'reps', 'date']
+        fields = ['id', 'muscle_group', 'movement', 'sets', 'reps', 'weight','date']
         depth = 1
 class WorkoutPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Workout
-        fields = ['muscle_group', 'movement', 'sets', 'reps', 'date']
+        fields = ['muscle_group', 'movement', 'sets', 'reps', 'weight', 'date']
         
        
 class MovementsSerializer(serializers.ModelSerializer):

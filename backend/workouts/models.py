@@ -24,6 +24,7 @@ class Workout(models.Model):
     movement = models.ForeignKey(Movements, on_delete=models.CASCADE)
     sets = models.IntegerField()
     reps = models.IntegerField()
+    weight = models.IntegerField(null=True)
     date = models.DateField(null=True)
     def __all__(self):
         return self.date

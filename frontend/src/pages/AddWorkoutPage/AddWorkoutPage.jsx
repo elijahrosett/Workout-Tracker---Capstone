@@ -12,6 +12,7 @@ let initialValues = {
     "movement": "",
     "sets": "",
     "reps": "",
+    "weight": '',
     "date": ""
 }
 
@@ -22,6 +23,7 @@ const AddWorkoutPage = (props) => {
     const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewWorkout)
     const [muscleGroups, setMuscleGroups ] = useState([])
     const [movements, setMovements] = useState([])
+    const [filteredMovements, setFilteredMovements] =useState([])
    
 
     async function fetchMuscleGroups() {
@@ -47,16 +49,18 @@ const AddWorkoutPage = (props) => {
         }
     }
 
-    useEffect(() => {
-      fetchMuscleGroups();
-      fetchMovements();
-  }, [])
+    
+
+        useEffect(() => {
+            fetchMuscleGroups();
+              }, [])
 
     const handleMuscleGroup = (id) => {
+        
         console.log(id)
         console.log(movements)
-        const dt = movements.filter(x => x.muscle_group == id);
-        setMovements(dt);
+        var dt = movements.filter(x => x.muscle_group == id);
+        setFilteredMovements(dt);
         console.log(dt);
     }
 
@@ -75,13 +79,19 @@ const AddWorkoutPage = (props) => {
             
         }
     }
+    useEffect(() => {
+        fetchMovements();
+        console.log("fetch movements")
+      }, [])
+
+
     return ( 
         <div className="container">
             <form className="form" onSubmit={handleSubmit}>
     
                 <label>
                     <select id='ddMuscleGroup' name="muscle_group" 
-                    className="form-control select-class"  onChange={e => { handleMuscleGroup(e.target.value); handleInputChange(e)} } >
+                    className="form-control select-class"  onChange={e => { handleMuscleGroup(e.target.value); handleInputChange(e); fetchMovements()} } >
                 <option value="0">Select Muscle Group</option>
                 {
                     muscleGroups &&
@@ -104,9 +114,9 @@ const AddWorkoutPage = (props) => {
                     onChange={handleInputChange} >
                 <option value="0">Select movement</option>
                 {
-                        movements &&
-                        movements !== undefined ?
-                        movements.map((m, index) => {
+                        filteredMovements &&
+                        filteredMovements !== undefined ?
+                        filteredMovements.map((m, index) => {
                             return (
                                 <option key={index} value={m.id}>{m.name}</option>
                             )
@@ -115,6 +125,15 @@ const AddWorkoutPage = (props) => {
                         : "No movement"
                 }
             </select>
+                </label>
+                <label>
+                    Weight:{""}
+                    <input 
+                    type="text"
+                    name="weight"
+                    value={formData.weight}
+                    onChange={handleInputChange}
+                />
                 </label>
                 <label>
                     Reps:{""}
