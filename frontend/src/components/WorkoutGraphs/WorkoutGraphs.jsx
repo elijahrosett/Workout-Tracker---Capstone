@@ -22,6 +22,10 @@ const WorkoutGraphs = (props) => {
     daysWorkedOut(props.userWorkouts);
     daysNotWorkedOut(props.dayRange, props.daysWorkedOut)
   })
+
+  var options = {
+    title: "Percent of days with a workout vs without"
+  }
     return (
       <div>
  
@@ -30,9 +34,10 @@ const WorkoutGraphs = (props) => {
 
 <Chart
   chartType="PieChart"
-  data={[["Days with a workout", "Days without a workout"], ["`Days with a workout", props.daysWorkedOut], [`Days without a workout (Past ${props.dayRange} days)`, props.nonWorkoutDays]]}
+  data={[["Days with a workout", "Days without a workout"], ["Days with a workout", props.daysWorkedOut], [`Days without a workout (Past ${props.dayRange} days)`, props.nonWorkoutDays]]}
   width="100%"
   height="400px"
+  options = {options}
   
 />
 

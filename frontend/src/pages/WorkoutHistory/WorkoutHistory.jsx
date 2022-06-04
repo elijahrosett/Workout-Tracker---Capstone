@@ -30,7 +30,7 @@ const WorkoutHistory = (props) => {
         <DateFilter daysWorkedOut={daysWorkedOut} setDayRange={setDayRange} startDate={startDate} setStartfilter={setStartfilter} endDate={endDate} setEndFilter={setEndFilter} userWorkouts={props.userWorkouts} filterResults={props.filterResults} setFilteredWorkouts={props.setFilteredWorkouts} setUserWorkouts={props.setUserWorkouts} fetchAllUserWorkouts={props.fetchAllUserWorkouts} />
         <DisplayWorkoutHistory setEditInfo={props.setEditInfo} handleEdit={props.handleEdit} handleDelete={props.handleDelete} dayRange={dayRange} daysWorkedOut={daysWorkedOut} userWorkouts={props.userWorkouts} filterResults={props.filterResults} setFilteredWorkouts={props.setFilteredWorkouts} />
         <WorkoutGraphs nonWorkoutDays={nonWorkoutDays} setDaysWorkedOut={setDaysWorkedOut} setNonWorkoutDays={setNonWorkoutDays} daysWorkedOut={daysWorkedOut} setDayRange={setDayRange} dayRange={dayRange} endDate={endDate} startDate={startDate} userWorkouts={props.userWorkouts} />
-        <WeightGraph fetchAllUserWorkouts={props.fetchAllUserWorkouts} userWorkouts={props.userWorkouts} />
+        <WeightGraph dayRange={dayRange}  fetchAllUserWorkouts={props.fetchAllUserWorkouts} userWorkouts={props.userWorkouts} />
         </div>
     );
 }

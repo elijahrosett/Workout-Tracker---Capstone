@@ -6,27 +6,19 @@ import axios from "axios";
 import React, { useState, useEffect } from 'react';
 
 
-let initialValues = {
-    
-    "muscle_group":"" ,
-    "movement": "",
-    "sets": "",
-    "reps": "",
-    "weight": '',
-    "date": "",
-    "total_weight": ""
-}
 
-const AddWorkoutPage = (props) => {
+
+
+const EditWorkout = (props) => {
+
+
     const [user, token] = useAuth()
     const navigate = useNavigate()
-    const [dateFilter, setDatefilter] = useState([{startDate: null, endDate: null}])
-    const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewWorkout)
-    const [muscleGroups, setMuscleGroups ] = useState([])
+    const [muscleGroups, setMuscleGroups] = useState([])
     const [movements, setMovements] = useState([])
-    const [filteredMovements, setFilteredMovements] =useState([])
-    const [totalWeight, setTotalWeight] =useState([])
-   
+    const [editArray, setEditArray] = useState([])
+ 
+           
 
     async function fetchMuscleGroups() {
         try {
@@ -51,142 +43,150 @@ const AddWorkoutPage = (props) => {
         }
     }
 
-    
-
-        useEffect(() => {
-            fetchMuscleGroups();
-              }, [])
+    useEffect(() => {
+        fetchMuscleGroups();
+        fetchMovements();
+    }, [])
 
     const handleMuscleGroup = (id) => {
-        
         console.log(id)
         console.log(movements)
-        var dt = movements.filter(x => x.muscle_group == id);
-        setFilteredMovements(dt);
+        const dt = movements.filter(x => x.muscle_group == id);
+        setMovements(dt);
         console.log(dt);
     }
 
 
-    async function postNewWorkout(){
+    async function postNewWorkout(array){
         try {
-            let response = await axios.post("http://127.0.0.1:8000/api/workout/", formData, {
+            let response = await axios.post("http://127.0.0.1:8000/api/workout/", array, {
                 headers: {
                     Authorization: 'Bearer ' + token
                 }
             })
             navigate('/')
-            
+           
         } catch (error) {
             console.log(error.message)
-            
+           
         }
     }
-    useEffect(() => {
-        fetchMovements();
-        console.log("fetch movements")
-      }, [])
 
-    function handleWeight(){
-        let totalWeight = formData.weight * formData.reps * formData.sets;
-        console.log(totalWeight)
-        setTotalWeight(totalWeight)
-        
+
+    const handleInputChange = (e) => {
+    
+        e.persist();
+        if (e.target.name === "isStudent") {
+          setEditArray({ ...editArray, [e.target.name]: e.target.checked });
+        } else {
+          setEditArray({ ...editArray, [e.target.name]: e.target.value });
+        }
+      }; 
+
+    function handleSubmit2(event) {
+        event.preventDefault();
+        let newWorkout = {
+            muscle_group: editArray.muscle_group ,
+            movement: editArray.movement,
+            sets: editArray.sets ,
+            reps: editArray.reps ,
+            weight: editArray.weight,
+            date: editArray.date,
+            total_weight: editArray.sets * editArray.weight * editArray.reps
+        };
+        console.log(newWorkout);
+        console.log(editArray)
+        postNewWorkout(newWorkout);
     }
-    
 
-    return ( 
+    return (
         <div className="container">
-            <form className="form" onSubmit={handleSubmit}>
-    
+            <h1>Add Workout</h1>
+            <form className="form" onSubmit={handleSubmit2}>
+
                 <label>
-                    <select id='ddMuscleGroup' name="muscle_group" 
-                    className="form-control select-class"  onChange={e => { handleMuscleGroup(e.target.value); handleInputChange(e); fetchMovements()} } >
-                <option value="0">Select Muscle Group</option>
-                {
-                    muscleGroups &&
-                    muscleGroups !== undefined ?
-                    muscleGroups.map((group, index) => {
-                            return (
-                                <option key={index} value={group.id}>{group.name}</option>
-                            )
+                    <select id='ddMuscleGroup' name="muscle_group"
+                        className="form-control select-class" onChange={e => { handleMuscleGroup(e.target.value); handleInputChange(e) }} >
+                        <option value="0">Select Muscle Group</option>
+                        {
+                            muscleGroups &&
+                                muscleGroups !== undefined ?
+                                muscleGroups.map((group, index) => {
+                                    return (
+                                        <option key={index} value={group.id}>{group.name}</option>
+                                    )
 
-                        })
-                        : "No muscle group"
-                }
+                                })
+                                : "No muscle group"
+                        }
 
-            </select>
-              
+                    </select>
+
                 </label>
                 <label>
-                <select id='ddMovement' className="form-control select-class" name="movement"
-                    value={formData.movement}
-                    onChange={handleInputChange} >
-                <option value="0">Select movement</option>
-                {
-                        filteredMovements &&
-                        filteredMovements !== undefined ?
-                        filteredMovements.map((m, index) => {
-                            return (
-                                <option key={index} value={m.id}>{m.name}</option>
-                            )
+                    <select id='ddMovement' className="form-control select-class" name="movement"
+                        value={editArray.movement}
+                        onChange={handleInputChange} >
+                        <option value="0">Select movement</option>
+                        {
+                            movements &&
+                                movements !== undefined ?
+                                movements.map((m, index) => {
+                                    return (
+                                        <option key={index} value={m.id}>{m.name}</option>
+                                    )
 
-                        })
-                        : "No movement"
-                }
-            </select>
+                                })
+                                : "No movement"
+                        }
+                    </select>
                 </label>
                 <label>
                     Weight:{""}
-                    <input 
-                    type="text"
-                    name="weight"
-                    value={formData.weight}
-                    onChange={handleInputChange}
-                />
+                    <input
+                        type="text"
+                        name="weight"
+                        value={editArray.weight}
+                        onChange={handleInputChange}
+                    />
                 </label>
                 <label>
                     Reps:{""}
-                    <input 
-                    type="text"
-                    name="reps"
-                    value={formData.reps}
-                    onChange={handleInputChange}
-                />
+                    <input
+                        type="text"
+                        name="reps"
+                        value={editArray.reps}
+                        onChange={handleInputChange}
+                    />
                 </label>
                 <label>
                     Sets:{""}
-                    <input 
-                    type="text"
-                    name="sets"
-                    value={formData.sets}
-                    onChange={handleInputChange}
-                />
+                    <input
+                        type="text"
+                        name="sets"
+                        value={editArray.sets}
+                        onChange={handleInputChange}
+                    />
                 </label>
                 <label>
                     Date:{""}
-                    <input 
-                    type="date"
-                    name="date"
-                    value={formData.date}
-                    onChange={handleInputChange}
-                    
-                />
+                    <input
+                        type="date"
+                        name="date"
+                        value={editArray.date}
+                        onChange={handleInputChange}
+                    />
                 </label>
-                    Total Weight: {totalWeight}
-                    <input type="text"
-                    name="weight"
-                    value={formData.total_weight}
+                <button>Update Workout!</button>
 
-                />
-                <button onClick={handleWeight} name="weight"
-                    value={formData.total_weight}>Add Workout!</button>
-                
             </form>
 
         </div>
 
 
-     );
+
+
+    );
 }
- 
-export default AddWorkoutPage;
+
+export default EditWorkout;
