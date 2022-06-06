@@ -65,14 +65,16 @@ const EditWorkout = (props) => {
                     Authorization: 'Bearer ' + token
                 }
             })
-            navigate('/')
+            
 
         } catch (error) {
             console.log(error.message)
 
         }
     }
-
+    function refreshPage() {
+        window.location.reload(false);
+      }
 
     const handleInputChange = (e) => {
 
@@ -107,101 +109,122 @@ const EditWorkout = (props) => {
                 <h1>Add Workout</h1>
             </div>
             <div className="row justify-content-center my-5" >
-            <div className="col-lg-6">
-                <form onSubmit={handleSubmit2}>
+                <div className="col-lg-6">
+                    <form onSubmit={handleSubmit2}>
 
-                    <div className="mb-3" >
-                        <label className="form-label" >Muscle Group: </label>
-                        <select id='ddMuscleGroup' name="muscle_group"
-                            className="form-select" onChange={e => { handleMuscleGroup(e.target.value); handleInputChange(e) }} >
-                            <option value="0">Select Muscle Group</option>
-                            {
-                                muscleGroups &&
-                                    muscleGroups !== undefined ?
-                                    muscleGroups.map((group, index) => {
-                                        return (
-                                            <option key={index} value={group.id}>{group.name}</option>
-                                        )
+                        <div className="mb-3" >
+                            <label className="form-label" >Muscle Group: </label>
+                            <select id='ddMuscleGroup' name="muscle_group"
+                                className="form-select" onChange={e => { handleMuscleGroup(e.target.value); handleInputChange(e) }} >
+                                <option value="0">Select Muscle Group</option>
+                                {
+                                    muscleGroups &&
+                                        muscleGroups !== undefined ?
+                                        muscleGroups.map((group, index) => {
+                                            return (
+                                                <option key={index} value={group.id}>{group.name}</option>
+                                            )
 
-                                    })
-                                    : "No muscle group"
-                            }
-                        </select>
-                    </div>
+                                        })
+                                        : "No muscle group"
+                                }
+                            </select>
+                        </div>
 
-                    <div className="mb-3">
-                        <label className="form-label" >Movement: </label>
-                        <select id='ddMovement' className="form-select" name="movement"
-                            value={editArray.movement}
-                            onChange={handleInputChange} >
-                            <option value="0">Select Movement</option>
-                            {
-                                movements &&
-                                    movements !== undefined ?
-                                    movements.map((m, index) => {
-                                        return (
-                                            <option key={index} value={m.id}>{m.name}</option>
-                                        )
+                        <div className="mb-3">
+                            <label className="form-label" >Movement: </label>
+                            <select id='ddMovement' className="form-select" name="movement"
+                                value={editArray.movement}
+                                onChange={handleInputChange} >
+                                <option value="0">Select Movement</option>
+                                {
+                                    movements &&
+                                        movements !== undefined ?
+                                        movements.map((m, index) => {
+                                            return (
+                                                <option key={index} value={m.id}>{m.name}</option>
+                                            )
 
-                                    })
-                                    : "No movement"
-                            }
-                        </select>
+                                        })
+                                        : "No movement"
+                                }
+                            </select>
 
-                    </div>
-
-
-                    <div className="mb-3">
-                        <label for="weight" className="form-label" >Weight:</label>
-                        <input
-                            className="form-control"
-                            type="text"
-                            name="weight"
-                            value={editArray.weight}
-                            onChange={handleInputChange}
-                        />
-
-                    </div >
-                    <div className="mb-3">
-                        <label for="reps" className="form-label" > Reps:</label>
-                        Reps:{""}
-                        <input
-                            className="form-control"
-                            type="text"
-                            name="reps"
-                            value={editArray.reps}
-                            onChange={handleInputChange}
-                        />
-                    </div>
-
-                    <div className="mb-3">
-                        <label for="sets" className="form-label">Sets:</label>
-                        <input
-                            className="form-control"
-                            type="text"
-                            name="sets"
-                            value={editArray.sets}
-                            onChange={handleInputChange}
-                        />
-
-                    </div>
-                    <div className="mb-3">
-                        <label className="form-label" >Date:{""}</label>
-                        <input
-                            className="form-control"
-                            type="date"
-                            name="date"
-                            value={editArray.date}
-                            onChange={handleInputChange}
-                        />
-
-                    </div>
-                    <div className="mb-4 text-center">
-                        <button type="submit" className="btn btn-primary" >Add Workout!</button>
-                    </div>
+                        </div>
 
 
-                </form>
+                        <div className="mb-3">
+                            <label for="weight" className="form-label" >Weight:</label>
+                            <input
+                                className="form-control"
+                                type="text"
+                                name="weight"
+                                value={editArray.weight}
+                                onChange={handleInputChange}
+                            />
+
+                        </div >
+                        <div className="mb-3">
+                            <label for="reps" className="form-label" > Reps:</label>
+                            
+                            <input
+                                className="form-control"
+                                type="text"
+                                name="reps"
+                                value={editArray.reps}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+
+                        <div className="mb-3">
+                            <label for="sets" className="form-label">Sets:</label>
+                            <input
+                                className="form-control"
+                                type="text"
+                                name="sets"
+                                value={editArray.sets}
+                                onChange={handleInputChange}
+                            />
+
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label" >Date:{""}</label>
+                            <input
+                                className="form-control"
+                                type="date"
+                                name="date"
+                                value={editArray.date}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                            <div className="mb-4 text-center">
+                                <button  type="submit" className="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#reg-modal">Save Workout!</button>
+                            
+                            </div>
+                            
+
+
+                            <div className="modal fade" id="reg-modal" aria-labelledby="modal-title" aria-hidden="true">
+                                <div className="modal-dialog modal-sm">
+                                    <div className="modal-content">
+                                        <div className="model-header">
+                                            <button type="button" className="Close" data-bs-dismiss="modal">x</button>
+                                            <div className="mb-4 text-center">
+                                                <h5 className="modal-title" id="modal-title">Workout Saved!</h5>
+                                            </div>
+
+                                        </div>
+                                        <div className="model-footer">
+                                            <div className="mb-4 text-center">
+                                            <button type="button" data-bs-dismiss="modal" className="btn btn-primary m-2" onClick={refreshPage}>Add another workout</button>
+                                                <button type="button" data-bs-dismiss="modal" className="btn btn-primary m-2" onClick={() => navigate("/workouthistory")}>View workout history</button>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
                 </div>
             </div>
         </div>

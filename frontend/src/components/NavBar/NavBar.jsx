@@ -17,7 +17,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link to="/">
-            <button>Home Page</button>
+            <button><i class="bi bi-house-door"></i></button>
           </Link>
         </li>
         <li>

@@ -61,3 +61,6 @@ button:hover {
   width: 50% !important;
   margin: 0 auto;
 }
+.alert{
+  display: none;
+}

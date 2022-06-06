@@ -62,7 +62,7 @@ const EditWorkout = (props) => {
             let response = await axios.put(`http://127.0.0.1:8000/api/workout/${pk}/`, array
             );
             console.log(response)
-            navigate('/')
+            
 
         } catch (error) {
             console.log(error.message)
@@ -197,16 +197,32 @@ const EditWorkout = (props) => {
                         
 
                         <div className="mb-4 text-center">
-                        <button type="submit" className="btn btn-primary" >Update Workout!</button>
+                        <button type="submit" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reg-modal">Update Workout!</button>
+                        </div>
+
+
+                        <div className="modal fade" id="reg-modal" aria-labelledby="modal-title" aria-hidden="true">
+                            <div className="modal-dialog modal-sm">
+                                <div className="modal-content">
+                                    <div className="model-header">
+                                    <button type="button" className="close" data-dismiss="modal">&times;</button>
+                                    <div className="mb-4 text-center">
+                                        <h5 className="modal-title" id="modal-title">Workout updated!</h5>
+                                        </div>
+                                       
+                                    </div>
+                                    <div className="model-footer">
+                                    <div className="mb-4 text-center">
+                                        <button type="button" data-bs-dismiss="modal" className="btn btn-primary btn-block" onClick={() => navigate("/workouthistory")}>View Workout History</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
         </div >
         </div>
-
-
-
-
 
 
 
