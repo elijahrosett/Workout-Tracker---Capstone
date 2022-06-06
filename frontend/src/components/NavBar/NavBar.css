@@ -9,23 +9,22 @@ li {
 }
 
 .navBar {
-  background: rgb(56, 112, 243);
+  background: #FF8D43;
   box-shadow: 4px 2px 5px gray;
   color: white;
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
 }
-
 .navBar button {
-  background: transparent;
+  background: white;
   border: 2px solid white;
-  color: white;
+  color: #63BAAB;
   padding: 0.4rem 0.5rem;
 }
 
 .navBar button:hover {
-  background: white;
-  color: rgb(56, 112, 243);
+  background: rgb(255, 255, 255);
+  color: #FF8D43;
   cursor: pointer;
 }
 

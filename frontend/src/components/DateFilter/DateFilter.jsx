@@ -1,8 +1,6 @@
 import moment from 'moment';
-import React, { useState, useEffect } from 'react';
+
 import "./DateFilter.css";
-import Button from 'react-bootstrap/Button'
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import { DropdownButton, Dropdown } from 'react-bootstrap';
 
 
@@ -59,23 +57,25 @@ const DateFilter = (props) => {
      function resetFilter(){
          props.fetchAllUserWorkouts()
      }
-//  SET END DATE TO NEW DATE() THEN CHECK BOOKMARKS TO FIGURE OUT HOW TO SET FOR X AMOUNT OF DAYS AGO, MAKE A ON CLICK FOR EACH BUTTON
-     
+
       
          
       
     
     return (
-        <div>
+        <div >
             <Dropdown>
-                <Dropdown.Toggle>
-                    Filter
+                <Dropdown.Toggle className="filter-color">
+                <span> 
+                 Filter
+                 </span>
+                 
                 </Dropdown.Toggle>
-            <Dropdown.Menu  title="Filter" id="vertical-dropdown-1">
-                <Dropdown.Item value={24} onClick={() => handleClick(24)} active>Past 24 Hours</Dropdown.Item>
-                <Dropdown.Item value={7} onClick={() => handleClick(7)} active>Past 7 Days</Dropdown.Item>
-                <Dropdown.Item value={30} onClick={() => handleClick(30)}active>Past 30 Days</Dropdown.Item>
-                <Dropdown.Item value={90} onClick={() => handleClick(90)}active>Past 90 Days</Dropdown.Item>
+            <Dropdown.Menu className="filter-color button"  title="Filter" id="vertical-dropdown-1" >
+                <Dropdown.Item value={24}  onClick={() => handleClick(24)} >Past 24 Hours</Dropdown.Item>
+                <Dropdown.Item value={7} onClick={() => handleClick(7)} >Past 7 Days</Dropdown.Item>
+                <Dropdown.Item value={30} onClick={() => handleClick(30)}>Past 30 Days</Dropdown.Item>
+                <Dropdown.Item value={90} onClick={() => handleClick(90)}>Past 90 Days</Dropdown.Item>
                 <Dropdown.Item  onClick={resetFilter}>Reset Filter</Dropdown.Item>
             </Dropdown.Menu>  
             </Dropdown> 

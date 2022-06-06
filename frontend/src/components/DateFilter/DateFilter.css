@@ -3,3 +3,15 @@ ul {
     justify-content: space-between;
     list-style-type: none;
   }
+
+.filter-color{
+    background: #00CB9F;
+    border: 2px solid white;
+    color: #683C20;
+    padding: 0.4rem 0.5rem;
+  }
+  .button:hover {
+    background: #00CB9F;
+    color: rgb(238, 241, 248);
+    cursor: pointer;
+  }

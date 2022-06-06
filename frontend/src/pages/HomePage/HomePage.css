@@ -1,0 +1,9 @@
+.background-body{
+    background-image: url("https://www.optimakierlandapartments.com/uploads/images/images/1336x1336G/678176/678176_7160-57.jpg?1633129796"); 
+    background-color: #cccccc;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}

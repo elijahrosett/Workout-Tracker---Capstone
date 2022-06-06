@@ -57,10 +57,19 @@ button:hover {
   font-size: 17px;
 }
 
-.select-class{
-  width: 50% !important;
-  margin: 0 auto;
+.border {
+  margin: 5px;
+  border: 2px;
+  padding: .5rem;
 }
-.alert{
-  display: none;
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+  }
+  
+  .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #00CB9F !important;
 }

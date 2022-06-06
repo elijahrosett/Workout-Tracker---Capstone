@@ -1,13 +1,10 @@
-import axios from "axios";
 import React, { useEffect, useState } from 'react';
 import DateFilter from "../../components/DateFilter/DateFilter";
 import DisplayWorkoutHistory from "../../components/DisplayWorkoutHistory/DisplayWorkoutHistory";
 import WorkoutGraphs from "../../components/WorkoutGraphs/WorkoutGraphs";
-import useAuth from "../../hooks/useAuth";
 import moment from 'moment';
-import EditWorkout from "../../components/EditWorkout/EditWorkout";
 import WeightGraph from "../../components/WeightGraph/WeightGraph";
-
+import "./WorkoutHistory.css"
 
 
 const WorkoutHistory = (props) => {
@@ -26,7 +23,8 @@ const WorkoutHistory = (props) => {
 
 
     return (
-        <div className="container-fluid">
+        <div className='background-color' >
+        <div className="container-lg">
             <div className="flex">
                 <DateFilter daysWorkedOut={daysWorkedOut} setDayRange={setDayRange} startDate={startDate} setStartfilter={setStartfilter} endDate={endDate} setEndFilter={setEndFilter} userWorkouts={props.userWorkouts} filterResults={props.filterResults} setFilteredWorkouts={props.setFilteredWorkouts} setUserWorkouts={props.setUserWorkouts} fetchAllUserWorkouts={props.fetchAllUserWorkouts} />
             </div>
@@ -41,6 +39,7 @@ const WorkoutHistory = (props) => {
                     <WeightGraph dayRange={dayRange} fetchAllUserWorkouts={props.fetchAllUserWorkouts} userWorkouts={props.userWorkouts} />
                 </div>
             </div>
+        </div>
         </div>
     );
 }

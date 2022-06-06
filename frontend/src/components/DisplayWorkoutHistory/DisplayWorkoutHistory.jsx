@@ -1,5 +1,6 @@
-
+import { BiEditAlt, BiTrash } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -42,10 +43,10 @@ const navigate = useNavigate()
                             <td>{workout.reps}</td>
                             <td>{workout.weight}</td>
                             <td>{workout.total_weight}</td>
-                            
-                            <button value={workout} onClick={() => handleClick(workout)}>Edit</button>
-                            <td><button value={workout} onClick={() => props.handleDelete(workout)}>Delete</button></td>
-                            
+                            <div >
+                            <td><a value={workout} onClick={() => handleClick(workout)}><BiEditAlt /></a></td>
+                            <td><a value={workout} onClick={() => props.handleDelete(workout)}><BiTrash color="red"/></a></td>
+                            </div>
                         
                         </tr>
                     )

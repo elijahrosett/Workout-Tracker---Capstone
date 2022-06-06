@@ -103,6 +103,7 @@ const EditWorkout = (props) => {
     }
 
     return (
+        <div className="border">
 
         <div className="container-lg">
             <div className="text-center">
@@ -197,7 +198,7 @@ const EditWorkout = (props) => {
                                 onChange={handleInputChange}
                             />
                         </div>
-                            <div className="mb-4 text-center">
+                            <div className=" mb-4 text-center">
                                 <button  type="submit" className="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#reg-modal">Save Workout!</button>
                             
                             </div>
@@ -229,7 +230,7 @@ const EditWorkout = (props) => {
             </div>
         </div>
 
-
+        </div>
 
 
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-
+import "./HomePage.css";
 import { Button } from 'bootstrap';
 
 
@@ -14,16 +14,25 @@ const HomePage = () => {
 
   
   return (
-    <div className="container">
-      <h1>Home Page for {user.username}!</h1>
+    <div>
+    <header className="text-center">
+      <h1>{user.first_name}'s Workout Tracker</h1>
+    </header>
+    <div className="background-body">
+   
+    </div>
+    </div>
+    
+      
       
       
       
       
          
       
-    </div>
-  );
-};
+    
+  )
+
+}
 
 export default HomePage;
