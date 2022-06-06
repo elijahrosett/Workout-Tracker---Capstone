@@ -100,7 +100,8 @@ const EditWorkout = (props) => {
     }
 
     return (
-        <div className="container">
+        <div className="container fluid">
+           
             <h1>Add Workout</h1>
             <form className="form" onSubmit={handleSubmit2}>
 
@@ -180,6 +181,7 @@ const EditWorkout = (props) => {
                 <button>Update Workout!</button>
 
             </form>
+            
 
         </div>
 

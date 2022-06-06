@@ -1,5 +1,4 @@
-import EditWorkout from "../EditWorkout/EditWorkout";
-import { Link, Outlet } from "react-router-dom";
+
 import { useNavigate } from "react-router-dom";
 
 
@@ -18,6 +17,7 @@ const navigate = useNavigate()
 
     return ( 
         <table className="table" >
+            <thead className="thead-dark">
                 <tr>
                     <th scope="col">Date</th>
                     <th scope="col">Muscle Group</th>
@@ -29,6 +29,7 @@ const navigate = useNavigate()
                     
 
                 </tr>
+                </thead>
             <tbody>
                 {props.userWorkouts.map((workout, index) => {
                     return (

@@ -1,7 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import axios from "axios";
+
+import { Button } from 'bootstrap';
+
 
 
 const HomePage = () => {
@@ -14,6 +16,7 @@ const HomePage = () => {
   return (
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
+      
       
       
       
