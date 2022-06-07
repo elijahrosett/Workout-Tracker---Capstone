@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import useCustomForm from "../../hooks/useCustomForm";
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
-
+import "./AddWorkout.css"
 
 
 
@@ -103,9 +103,11 @@ const EditWorkout = (props) => {
     }
 
     return (
-        <div className="border">
+        <div >
 
-        <div className="container-lg">
+        <div className="container-lg background-color"
+  
+>
             <div className="text-center">
                 <h1>Add Workout</h1>
             </div>

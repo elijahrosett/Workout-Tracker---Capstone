@@ -7,6 +7,7 @@ import {FaHome} from "react-icons/fa";
 import {GiWeightLiftingUp} from "react-icons/gi";
 import {HiOutlineClipboardList} from "react-icons/hi";
 import {FiLogOut} from "react-icons/fi";
+import {BsFillPersonLinesFill} from "react-icons/bs";
 
 const Navbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
@@ -32,13 +33,18 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
+          <Link to="/socialfeed">
+            <button className="btn"><BsFillPersonLinesFill size="2em"/>Social Feed</button>
+          </Link>
+        </li>
+        <li>
           <Link to="/workouthistory">
-            <button className="btn"><HiOutlineClipboardList size="2em"/>Workout History</button>
+            <button className="btn"><HiOutlineClipboardList size="2em"/><span  > My History</span></button>
           </Link>
         </li>
         <li>
           {user ? (
-            <button onClick={logoutUser}><FiLogOut/></button>
+            <button className="btn" onClick={logoutUser}><FiLogOut/></button>
           ) : (
             <button onClick={() => navigate("/login")}>Login</button>
           )}

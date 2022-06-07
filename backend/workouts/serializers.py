@@ -1,12 +1,16 @@
 
+from dataclasses import fields
 from rest_framework import serializers
 from .models import *
 
-
+# class GetAllWorkoutsSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Workout
+#         fields = ['user', 'id', 'muscle_group', 'movement', 'sets', 'reps', 'weight', 'total_weight', 'date']
 class WorkoutGetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Workout
-        fields = ['id', 'muscle_group', 'movement', 'sets', 'reps', 'weight', 'total_weight', 'date']
+        fields = ['user', 'id', 'muscle_group', 'movement', 'sets', 'reps', 'weight', 'total_weight', 'date']
         depth = 1
 class WorkoutPostSerializer(serializers.ModelSerializer):
     class Meta:

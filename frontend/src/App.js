@@ -4,7 +4,6 @@ import "./App.css";
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
-import Button from "bootstrap"
 
  
 
@@ -16,6 +15,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import AddWorkoutPage from "./pages/AddWorkoutPage/AddWorkoutPage";
 import WorkoutHistory from "./pages/WorkoutHistory/WorkoutHistory";
 import Dropdown2 from "./components/Dropdown2/Dropdown2";
+import SocialFeed from "./pages/SocialFeed/SocialFeed";
 
 
 // Component Imports
@@ -37,6 +37,19 @@ function App() {
   const [userWorkouts, setUserWorkouts] = useState([])
   const [user, token] = useAuth();
   const [editInfo, setEditInfo] = useState([])
+  const [allWorkouts, setAllWorkouts] =useState([])
+
+  async function fetchAllWorkouts() {
+    try {
+      let response = await axios.get('http://127.0.0.1:8000/api/workout/all/');
+      console.log(response.data)
+      setAllWorkouts(response.data)
+      
+    } catch (error) {
+      console.log(error)
+      
+    }
+  }
 
   async function fetchAllUserWorkouts() {
       try {
@@ -79,6 +92,7 @@ async function handleEdit(pk) {
 
   useEffect(() => {
     fetchAllUserWorkouts();
+    fetchAllWorkouts()
     
 }, [])
   return (
@@ -99,6 +113,7 @@ async function handleEdit(pk) {
         <Route path="addworkout" element={<PrivateRoute><AddWorkoutPage /></PrivateRoute>} />
         <Route path="workouthistory"  element={<PrivateRoute><WorkoutHistory editInfo={editInfo} setEditInfo={setEditInfo} handleEdit={handleEdit} handleDelete={handleDelete} userWorkouts={userWorkouts} setUserWorkouts={setUserWorkouts} fetchAllUserWorkouts={fetchAllUserWorkouts} /></PrivateRoute>} />
         <Route path="edit" element={<PrivateRoute><EditWorkout editInfo={editInfo}  /></PrivateRoute>} />
+        <Route path="socialfeed" element={<PrivateRoute><SocialFeed userWorkouts={userWorkouts} allWorkouts={allWorkouts} fetchAllWorkouts={fetchAllWorkouts}/></PrivateRoute>}/>
         
         
       </Routes>
