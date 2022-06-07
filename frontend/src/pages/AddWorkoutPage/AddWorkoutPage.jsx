@@ -18,6 +18,7 @@ const EditWorkout = (props) => {
     const [muscleGroups, setMuscleGroups] = useState([])
     const [movements, setMovements] = useState([])
     const [editArray, setEditArray] = useState([])
+    const [movementFilter, setMovementFilter] = useState([])
 
 
 
@@ -44,17 +45,14 @@ const EditWorkout = (props) => {
         }
     }
 
-    useEffect(() => {
-        fetchMuscleGroups();
-        fetchMovements();
-    }, [])
 
     const handleMuscleGroup = (id) => {
         console.log(id)
         console.log(movements)
         const dt = movements.filter(x => x.muscle_group == id);
-        setMovements(dt);
-        console.log(dt);
+        setMovementFilter(dt);
+        console.log(movementFilter);
+        
     }
 
 
@@ -102,6 +100,14 @@ const EditWorkout = (props) => {
         postNewWorkout(newWorkout);
     }
 
+    
+   
+
+    useEffect(() => {
+        fetchMuscleGroups();
+        fetchMovements();
+    }, [])
+
     return (
         <div >
 
@@ -118,7 +124,7 @@ const EditWorkout = (props) => {
                         <div className="mb-3" >
                             <label className="form-label" >Muscle Group: </label>
                             <select id='ddMuscleGroup' name="muscle_group"
-                                className="form-select" onChange={e => { handleMuscleGroup(e.target.value); handleInputChange(e) }} >
+                                className="form-select"  onChange={e => { handleMuscleGroup(e.target.value); handleInputChange(e);  }} >
                                 <option value="0">Select Muscle Group</option>
                                 {
                                     muscleGroups &&
@@ -141,9 +147,9 @@ const EditWorkout = (props) => {
                                 onChange={handleInputChange} >
                                 <option value="0">Select Movement</option>
                                 {
-                                    movements &&
-                                        movements !== undefined ?
-                                        movements.map((m, index) => {
+                                    movementFilter &&
+                                    movementFilter !== undefined ?
+                                    movementFilter.map((m, index) => {
                                             return (
                                                 <option key={index} value={m.id}>{m.name}</option>
                                             )

@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { AiOutlineLike } from "react-icons/ai";
+import "./SocialDisplay.css";
 
 
 const SocialDisplay = (props) => {
@@ -14,7 +16,8 @@ const SocialDisplay = (props) => {
       {reversedArray.map((workout, index) => {
           return (
               <div className="card">
-                  <span>{workout.user.first_name} has completed a {workout.muscle_group.name} workout totalling {workout.total_weight} lbs!</span>
+                  <td><span>{workout.user.first_name} has completed a {workout.muscle_group.name} on {workout.date} workout totalling {workout.total_weight} lbs!</span></td>
+                  <td><a className="social" ><AiOutlineLike/></a></td>
 
 
 
