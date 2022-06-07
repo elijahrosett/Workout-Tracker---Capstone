@@ -17,6 +17,7 @@ const EditWorkout = (props) => {
     const [muscleGroups, setMuscleGroups] = useState([])
     const [movements, setMovements] = useState([])
     const [editArray, setEditArray] = useState([])
+    const [movementFilter, setMovementFilter] = useState([])
 
 
 
@@ -52,9 +53,12 @@ const EditWorkout = (props) => {
         console.log(id)
         console.log(movements)
         const dt = movements.filter(x => x.muscle_group == id);
-        setMovements(dt);
-        console.log(dt);
+        setMovementFilter(dt);
+        console.log(movementFilter);
+        
     }
+
+
 
 
     async function updateWorkout(pk, array) {
@@ -133,9 +137,9 @@ const EditWorkout = (props) => {
                                 onChange={handleInputChange} >
                                 <option value="0">Select movement</option>
                                 {
-                                    movements &&
-                                        movements !== undefined ?
-                                        movements.map((m, index) => {
+                                    movementFilter &&
+                                    movementFilter !== undefined ?
+                                    movementFilter.map((m, index) => {
                                             return (
                                                 <option key={index} value={m.id}>{m.name}</option>
                                             )

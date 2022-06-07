@@ -32,7 +32,7 @@ const navigate = useNavigate()
                 </tr>
                 </thead>
             <tbody>
-                {props.userWorkouts.map((workout, index) => {
+                {props.userWorkoutsFilter.map((workout, index) => {
                     return (
 
                         <tr key={index}>

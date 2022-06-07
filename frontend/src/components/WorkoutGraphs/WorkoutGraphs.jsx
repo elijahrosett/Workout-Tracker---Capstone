@@ -7,19 +7,27 @@ const WorkoutGraphs = (props) => {
 
   function daysNotWorkedOut(timePeriod, Workouts){
     let nonWorkouts = timePeriod - Workouts;
-    props.setNonWorkoutDays(nonWorkouts);
+    console.log(nonWorkouts)
+    if (nonWorkouts <= 0){
+      props.setNonWorkoutDays(0)
+      console.log(nonWorkouts)
+    }
+    else{props.setNonWorkoutDays(nonWorkouts);
+    console.log(nonWorkouts)}
+    
   }
 
 
   function daysWorkedOut(workoutArray){
     let daysWorkedOut = workoutArray.map(item => item.date)
     .filter((value, index, self) => self.indexOf(value) === index)
+    console.log(daysWorkedOut)
     props.setDaysWorkedOut(daysWorkedOut.length)
 
   }
   
   useEffect(() => {
-    daysWorkedOut(props.userWorkouts);
+    daysWorkedOut(props.userWorkoutsFilter);
     daysNotWorkedOut(props.dayRange, props.daysWorkedOut)
   })
 

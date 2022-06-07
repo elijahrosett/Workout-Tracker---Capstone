@@ -14,29 +14,29 @@ const WeightGraph = (props) => {
 
 
     useEffect(() => {
-        let Weight = props.userWorkouts.filter(function(workout){
+        let Weight = props.userWorkoutsFilter.filter(function(workout){
              return workout.muscle_group.name == "Legs";
          });
         let result = Weight.reduce((total, currentValue) => total = total + currentValue.total_weight,0);
         let average = result / Weight.length;
         setLegsWorkouts(average);
         console.log("legs", average)
-     },[props.userWorkouts])
+     },[props.userWorkoutsFilter])
     
 
     useEffect(() => {
-        let Weight = props.userWorkouts.filter(function(workout){
+        let Weight = props.userWorkoutsFilter.filter(function(workout){
              return workout.muscle_group.name == "Arms";
          });
         let result = Weight.reduce((total, currentValue) => total = total + currentValue.total_weight,0);
         let average = result / Weight.length;
         setArmWorkouts(average);
         console.log("arms", average);
-     },[props.userWorkouts])
+     },[props.userWorkoutsFilter])
 
 
     useEffect(() => {
-        let Weight = props.userWorkouts.filter(function(workout){
+        let Weight = props.userWorkoutsFilter.filter(function(workout){
              return workout.muscle_group.name == "Shoulders";
          });
         let result = Weight.reduce((total, currentValue) => total = total + currentValue.total_weight,0);
@@ -44,38 +44,38 @@ const WeightGraph = (props) => {
         setShoulderWorkouts(average);
         console.log("shoulder", average);
         
-    },[props.userWorkouts])
+    },[props.userWorkoutsFilter])
 
 
     useEffect(() => {
-        let Weight = props.userWorkouts.filter(function(workout){
+        let Weight = props.userWorkoutsFilter.filter(function(workout){
              return workout.muscle_group.name == "Chest";
          })
         let result = Weight.reduce((total, currentValue) => total = total + currentValue.total_weight,0);
         let average = result / Weight.length;
         setChestWorkouts(average);
         console.log("chest", average);
-     },[props.userWorkouts])
+     },[props.userWorkoutsFilter])
     
     useEffect(() => {
-        let Weight = props.userWorkouts.filter(function(workout){
+        let Weight = props.userWorkoutsFilter.filter(function(workout){
              return workout.muscle_group.name == "Back";
          })
         let result = Weight.reduce((total, currentValue) => total = total + currentValue.total_weight,0);
         let average = result / Weight.length;
         setBackWorkouts(average);
         console.log("back", average);
-     },[props.userWorkouts])
+     },[props.userWorkoutsFilter])
 
      useEffect(() => {
-        let Weight = props.userWorkouts.filter(function(workout){
+        let Weight = props.userWorkoutsFilter.filter(function(workout){
              return workout.muscle_group.name == "Abs";
          })
         let result = Weight.reduce((total, currentValue) => total = total + currentValue.total_weight,0);
         let average = result / Weight.length;
         setAbsWorkouts(average);
         console.log("abs", average);
-     },[props.userWorkouts])
+     },[props.userWorkoutsFilter])
 
 
 

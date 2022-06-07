@@ -2,6 +2,7 @@ import moment from 'moment';
 
 import "./DateFilter.css";
 import { DropdownButton, Dropdown } from 'react-bootstrap';
+import { useEffect } from 'react';
 
 
 const DateFilter = (props) => {
@@ -45,8 +46,10 @@ const DateFilter = (props) => {
                 return el.date <= props.endDate &&
                     el.date >= moment().subtract(90, 'days').format("YYYY-MM-DD")
             });}
+        
+        
    
-        props.setUserWorkouts(newArray);
+        props.setUserWorkoutsFilter(newArray);
         console.log(newArray);
         
     }
@@ -55,11 +58,14 @@ const DateFilter = (props) => {
 
 
      function resetFilter(){
-         props.fetchAllUserWorkouts()
+         props.setUserWorkoutsFilter(props.userWorkouts)
      }
 
       
-         
+    useEffect(() => {
+        handleClick(90)
+
+    },[])  
       
     
     return (
