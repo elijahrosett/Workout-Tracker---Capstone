@@ -22,18 +22,18 @@ const Navbar = () => {
         <li>
           <Link to="/">
             <button className="btn">
-              <FaHome />    home
+              <FaHome size="2em"/>    home
              </button>
           </Link>
         </li>
         <li>
           <Link to="/addworkout">
-            <button className="btn"><GiWeightLiftingUp/>Add Workout</button>
+            <button className="btn"><GiWeightLiftingUp size="2em" />Add Workout</button>
           </Link>
         </li>
         <li>
           <Link to="/workouthistory">
-            <button className="btn"><HiOutlineClipboardList/>Workout History</button>
+            <button className="btn"><HiOutlineClipboardList size="2em"/>Workout History</button>
           </Link>
         </li>
         <li>
