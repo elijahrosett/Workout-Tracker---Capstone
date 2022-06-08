@@ -1,8 +1,11 @@
 import React, { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import useCustomForm from "../../hooks/useCustomForm";
+import { useNavigate, Link } from "react-router-dom";
+import "./RegisterPage.css";
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
   const { registerUser } = useContext(AuthContext);
   const defaultValues = {
     username: "",
@@ -17,8 +20,27 @@ const RegisterPage = () => {
   );
 
   return (
+    <div>
+              <div className="navBar">
+      <header>
+      <ul>
+        <li className="brand">
+          <Link to="/" style={{ textDecoration: "none", color: "#683C20" }}>
+            <b>Workout Tracker</b>
+          </Link>
+        </li>
+        <li>
+          <Link to="/login">
+            <button className="btn">
+               Login
+             </button>
+          </Link>
+        </li>
+      </ul>
+      </header>
+      </div>
     <div className="container">
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form background-color" onSubmit={handleSubmit}>
         <label>
           Username:{" "}
           <input
@@ -70,6 +92,7 @@ const RegisterPage = () => {
         </p>
         <button>Register!</button>
       </form>
+    </div>
     </div>
   );
 };

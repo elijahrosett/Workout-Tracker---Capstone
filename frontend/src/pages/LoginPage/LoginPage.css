@@ -1,3 +1,44 @@
 .error {
   color: red;
 }
+.background-color{
+  background-color:#FFF7F0 ;
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+li {
+  font-size: 1.25rem;
+}
+
+.navBar {
+  background: #FF8D43;
+  box-shadow: 4px 2px 5px gray;
+  color: white;
+  margin-bottom: 2rem;
+  padding: 1.5rem 2rem;
+}
+.navBar button {
+  background: white;
+  border: 1px solid white;
+  color: #63BAAB;
+  padding: 0.2rem 0.3rem;
+  width: auto;
+  height: auto;
+  
+}
+
+.navBar button:hover {
+  background: rgb(255, 255, 255);
+  color: #FF8D43;
+  cursor: pointer;
+}
+
+.brand {
+  cursor: pointer;
+  font-size: 2rem;
+}

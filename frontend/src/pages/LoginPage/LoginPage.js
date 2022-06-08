@@ -3,8 +3,11 @@ import AuthContext from "../../context/AuthContext";
 import useCustomForm from "../../hooks/useCustomForm";
 import { Link } from "react-router-dom";
 import "./LoginPage.css";
+import { useNavigate,  } from "react-router-dom";
+import {FaHome} from "react-icons/fa";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const { loginUser, isServerError } = useContext(AuthContext);
   const defaultValues = { username: "", password: "" };
   const [formData, handleInputChange, handleSubmit, reset] = useCustomForm(
@@ -19,8 +22,29 @@ const LoginPage = () => {
   }, [isServerError]);
 
   return (
+    <div>
+      <div className="navBar">
+      <header>
+      
+      <ul>
+        <li className="brand">
+          <Link to="/" style={{ textDecoration: "none", color: "#683C20" }}>
+            <b>Workout Tracker</b>
+          </Link>
+        </li>
+        <li>
+          <Link to="/register">
+            <button className="btn">
+               Register
+             </button>
+          </Link>
+        </li>
+      </ul>
+    
+      </header>
+      </div>
     <div className="container-lg">
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form background-color" onSubmit={handleSubmit}>
         <label>
           Username:{" "}
           <input
@@ -45,6 +69,10 @@ const LoginPage = () => {
         <Link to="/register">Click to register!</Link>
         <button>Login!</button>
       </form>
+      <div className="background-color">
+        
+      </div>
+    </div>
     </div>
   );
 };

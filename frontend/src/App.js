@@ -97,12 +97,13 @@ async function handleEdit(pk) {
 }, [])
   return (
     <div>
-      <Navbar />
+      
       <Routes>
         <Route
           path="/"
           element={
             <PrivateRoute>
+              <Navbar />
               <HomePage />
             </PrivateRoute>
           }
