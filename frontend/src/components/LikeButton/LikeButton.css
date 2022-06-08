@@ -1,0 +1,17 @@
+
+.like{
+    background: transparent;
+    color: #63BAAB;
+    width: auto;
+    height: auto;
+  }
+
+
+.inactive{
+    background: transparent;
+    border: 1px solid white;
+    color: #FF8D43;
+    padding: 0.2rem 0.3rem;
+    width: auto;
+    height: auto;
+}

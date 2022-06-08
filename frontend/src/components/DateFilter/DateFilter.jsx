@@ -49,7 +49,7 @@ const DateFilter = (props) => {
         
         
    
-        props.setUserWorkoutsFilter(newArray);
+        props.setUserWorkoutsFilter(newArray.reverse());
         console.log(newArray);
         
     }

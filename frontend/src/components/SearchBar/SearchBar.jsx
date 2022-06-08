@@ -1,5 +1,5 @@
 const SearchBar = (props) => {
-    return ( <h1>search bar</h1> );
+    return ( <h1>Social Feed</h1> );
 }
  
 export default SearchBar;

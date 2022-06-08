@@ -31,7 +31,7 @@ const WorkoutHistory = (props) => {
                 <DateFilter setUserWorkoutsFilter={setUserWorkoutsFilter} userWorkoutsFilter={userWorkoutsFilter} daysWorkedOut={daysWorkedOut} setDayRange={setDayRange} startDate={startDate} setStartfilter={setStartfilter} endDate={endDate} setEndFilter={setEndFilter} userWorkouts={props.userWorkouts} filterResults={props.filterResults} setFilteredWorkouts={props.setFilteredWorkouts} setUserWorkouts={props.setUserWorkouts} fetchAllUserWorkouts={props.fetchAllUserWorkouts} />
             </div>
             <div className="table"> 
-            <DisplayWorkoutHistory userWorkoutsFilter={userWorkoutsFilter} setEditInfo={props.setEditInfo} handleEdit={props.handleEdit} handleDelete={props.handleDelete} dayRange={dayRange} daysWorkedOut={daysWorkedOut} userWorkouts={props.userWorkouts} filterResults={props.filterResults} setFilteredWorkouts={props.setFilteredWorkouts} />
+            <DisplayWorkoutHistory fetchAllUserWorkouts={props.fetchAllUserWorkouts} userWorkoutsFilter={userWorkoutsFilter} setEditInfo={props.setEditInfo} handleEdit={props.handleEdit} handleDelete={props.handleDelete} dayRange={dayRange} daysWorkedOut={daysWorkedOut} userWorkouts={props.userWorkouts} filterResults={props.filterResults} setFilteredWorkouts={props.setFilteredWorkouts} />
             </div>
             <div className="row">
                 <div className="col-md-6">

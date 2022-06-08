@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { AiOutlineLike } from "react-icons/ai";
-import "./SocialDisplay.css";
 
+import LikeButton from "../LikeButton/LikeButton";
+import "./SocialDisplay.css";
 
 const SocialDisplay = (props) => {
     const [reversedArray, setReversedArray] = useState([])
@@ -12,13 +12,13 @@ const SocialDisplay = (props) => {
         setReversedArray(reversedArray)
     },[])
     return (
-        <div className="list-group">
+        <div>
       {reversedArray.map((workout, index) => {
           return (
-              <div className="card">
-                  <td><span>{workout.user.first_name} has completed a {workout.muscle_group.name} on {workout.date} workout totalling {workout.total_weight} lbs!</span></td>
-                  <td><a className="social" ><AiOutlineLike/></a></td>
-
+              <div className="list-group">
+                  <td><span>{workout.user.first_name} has completed a {workout.muscle_group.name} workout on {workout.date} totalling {workout.total_weight} lbs!</span></td>
+                  <td><LikeButton/></td>
+                   
 
 
               </div>

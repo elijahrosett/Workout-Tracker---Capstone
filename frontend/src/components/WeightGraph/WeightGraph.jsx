@@ -54,7 +54,6 @@ const WeightGraph = (props) => {
         let result = Weight.reduce((total, currentValue) => total = total + currentValue.total_weight,0);
         let average = result / Weight.length;
         setChestWorkouts(average);
-        console.log("chest", average);
      },[props.userWorkoutsFilter])
     
     useEffect(() => {
@@ -64,7 +63,6 @@ const WeightGraph = (props) => {
         let result = Weight.reduce((total, currentValue) => total = total + currentValue.total_weight,0);
         let average = result / Weight.length;
         setBackWorkouts(average);
-        console.log("back", average);
      },[props.userWorkoutsFilter])
 
      useEffect(() => {
@@ -74,7 +72,6 @@ const WeightGraph = (props) => {
         let result = Weight.reduce((total, currentValue) => total = total + currentValue.total_weight,0);
         let average = result / Weight.length;
         setAbsWorkouts(average);
-        console.log("abs", average);
      },[props.userWorkoutsFilter])
 
 

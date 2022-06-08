@@ -23,7 +23,7 @@ const Navbar = () => {
         <li>
           <Link to="/">
             <button className="btn">
-              <FaHome size="2em"/>    home
+              <FaHome size="2em"/>    Home
              </button>
           </Link>
         </li>

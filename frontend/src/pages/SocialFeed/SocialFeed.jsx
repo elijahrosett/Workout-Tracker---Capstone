@@ -9,7 +9,7 @@ const SocialFeed = (props) => {
         
     }, [props.userWorkouts])
     return ( 
-    <div>
+    <div className="container background-color">
         <SearchBar allWorkouts={props.allWorkouts}/>
         <SocialDisplay allWorkouts={props.allWorkouts} />
     </div>

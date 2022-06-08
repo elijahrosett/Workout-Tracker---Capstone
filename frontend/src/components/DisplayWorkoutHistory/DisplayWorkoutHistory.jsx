@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BiEditAlt, BiTrash } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 
@@ -11,10 +12,11 @@ const navigate = useNavigate()
  function handleClick(workout){
     props.setEditInfo(workout)
     navigate("/edit")
-    console.log(workout)
 
  }
-
+useEffect(() => {
+    props.fetchAllUserWorkouts()
+},[])
 
     return ( 
         <table className="table" >
