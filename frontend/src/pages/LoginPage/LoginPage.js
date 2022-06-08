@@ -6,6 +6,7 @@ import "./LoginPage.css";
 import { useNavigate,  } from "react-router-dom";
 import {FaHome} from "react-icons/fa";
 
+
 const LoginPage = () => {
   const navigate = useNavigate();
   const { loginUser, isServerError } = useContext(AuthContext);
@@ -55,13 +56,16 @@ const LoginPage = () => {
           />
         </label>
         <label>
+          
           Password:{" "}
           <input
             type="text"
             name="password"
             value={formData.password}
             onChange={handleInputChange}
-          />
+            />
+          
+          
         </label>
         {isServerError ? (
           <p className="error">Login failed, incorrect credentials!</p>

@@ -5,6 +5,7 @@ import useCustomForm from "../../hooks/useCustomForm";
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import "./AddWorkout.css"
+import Navbar from "../../components/NavBar/NavBar";
 
 
 
@@ -110,6 +111,7 @@ const EditWorkout = (props) => {
 
     return (
         <div >
+            <Navbar />
 
         <div className="container-lg background-color"
   

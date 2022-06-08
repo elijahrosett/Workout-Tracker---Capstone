@@ -108,7 +108,8 @@ async function handleEdit(pk) {
             </PrivateRoute>
           }
         />
-        <Route path="/register" element={<RegisterPage />} />
+        
+        <Route path="/register" element={ <RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="dropdown2" element={<Dropdown2/>} />
         <Route path="addworkout" element={<PrivateRoute><AddWorkoutPage /></PrivateRoute>} />

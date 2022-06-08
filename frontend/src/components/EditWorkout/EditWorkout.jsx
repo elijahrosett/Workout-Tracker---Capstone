@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import "./EditWorkout.css";
+import Navbar from "../NavBar/NavBar";
 
 
 
@@ -102,7 +103,9 @@ const EditWorkout = (props) => {
     }
 
     return (
-
+        <div>
+            <Navbar />
+        
         <div className="container-lg background-color">
             <div className="text-center">
                 <h1>{`Edit Workout ${props.editInfo.id}`}</h1>
@@ -227,6 +230,7 @@ const EditWorkout = (props) => {
                     </form>
                 </div>
         </div >
+        </div>
         </div>
 
 

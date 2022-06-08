@@ -5,6 +5,7 @@ import WorkoutGraphs from "../../components/WorkoutGraphs/WorkoutGraphs";
 import moment from 'moment';
 import WeightGraph from "../../components/WeightGraph/WeightGraph";
 import "./WorkoutHistory.css"
+import Navbar from '../../components/NavBar/NavBar';
 
 
 const WorkoutHistory = (props) => {
@@ -25,6 +26,8 @@ const WorkoutHistory = (props) => {
 
 
     return (
+        <div>
+            <Navbar/>
         <div className='background-color' >
         <div className="container-lg">
             <div className="flex">
@@ -41,6 +44,7 @@ const WorkoutHistory = (props) => {
                     <WeightGraph userWorkoutsFilter={userWorkoutsFilter} dayRange={dayRange} fetchAllUserWorkouts={props.fetchAllUserWorkouts} userWorkouts={props.userWorkouts} />
                 </div>
             </div>
+        </div>
         </div>
         </div>
     );
