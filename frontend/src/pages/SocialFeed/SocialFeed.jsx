@@ -6,17 +6,16 @@ const SocialFeed = (props) => {
     useEffect(() => {
         props.fetchAllWorkouts()
         console.log(props.allWorkouts)
-        
     }, [props.userWorkouts])
     return ( 
         <div>
             <Navbar/>
-    <div className="container background-color">
-        
+    <div className="container background-color">       
         <SearchBar allWorkouts={props.allWorkouts}/>
+        </div>
         <SocialDisplay allWorkouts={props.allWorkouts} />
     </div>
-    </div>
+    
         
      );
 }

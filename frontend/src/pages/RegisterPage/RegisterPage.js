@@ -39,7 +39,7 @@ const RegisterPage = () => {
       </ul>
       </header>
       </div>
-    <div className="container">
+    <div className="container-fluid">
       <form className="form background-color" onSubmit={handleSubmit}>
         <label>
           Username:{" "}

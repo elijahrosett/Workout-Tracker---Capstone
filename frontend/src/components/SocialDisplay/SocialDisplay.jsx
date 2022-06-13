@@ -5,31 +5,31 @@ import LikeButton from "../LikeButton/LikeButton";
 import "./SocialDisplay.css";
 
 const SocialDisplay = (props) => {
-    const [reversedArray, setReversedArray] = useState([])
+  const [reversedArray, setReversedArray] = useState([])
 
-    useEffect(() => {
-        var reversedArray = props.allWorkouts.reverse()
-        setReversedArray(reversedArray)
-    },[])
-    return (
-        <div>
+  useEffect(() => {
+    var reversedArray = props.allWorkouts.reverse()
+    setReversedArray(reversedArray)
+  }, [])
+  return (
+    <div>
       {reversedArray.map((workout, index) => {
-          return (
-              <div className="list-group">
-                  <td><span>{workout.user.first_name} has completed a {workout.muscle_group.name} workout on {workout.date} totalling {workout.total_weight} lbs!</span></td>
-                  <td><LikeButton/></td>
-                   
+        return (
+            <div className="">
+            <div className="border">
+              <span>{workout.user.first_name} has completed a {workout.muscle_group.name} workout on {workout.date} totalling {workout.total_weight} lbs! <LikeButton /></span>
 
 
-              </div>
+            </div>
+            </div>
+            
+        );
+      })}
 
-          );
-      })}   
 
+    </div>
 
-        </div>
-
-      );
+  );
 }
- 
+
 export default SocialDisplay;

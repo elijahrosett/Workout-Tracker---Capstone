@@ -43,8 +43,10 @@ const LoginPage = () => {
       </ul>
     
       </header>
+      
       </div>
-    <div className="container-lg">
+      <body>
+    <div className="container-fluid">
       <form className="form background-color" onSubmit={handleSubmit}>
         <label>
           Username:{" "}
@@ -59,7 +61,7 @@ const LoginPage = () => {
           
           Password:{" "}
           <input
-            type="text"
+            type="password"
             name="password"
             value={formData.password}
             onChange={handleInputChange}
@@ -74,9 +76,12 @@ const LoginPage = () => {
         <button>Login!</button>
       </form>
       <div className="background-color">
-        
+      
       </div>
+      
     </div>
+    </body>
+    
     </div>
   );
 };
