@@ -118,7 +118,7 @@ const EditWorkout = (props) => {
                        <label className="form-label" >Muscle Group: </label>
                         <select id='ddMuscleGroup' name="muscle_group"
                             className="form-select" onChange={e => { handleMuscleGroup(e.target.value); handleInputChange(e) }} >
-                            <option value="0">Select Muscle Group</option>
+                            <option value="0">{props.editInfo.muscle_group.name}</option>
                             {
                                 muscleGroups &&
                                     muscleGroups !== undefined ?
@@ -139,7 +139,7 @@ const EditWorkout = (props) => {
                             <select id='ddMovement' className="form-select" name="movement"
                                 value={editArray.movement}
                                 onChange={handleInputChange} >
-                                <option value="0">Select movement</option>
+                                <option value="0">{props.editInfo.movement.name}</option>
                                 {
                                     movementFilter &&
                                     movementFilter !== undefined ?
@@ -196,6 +196,7 @@ const EditWorkout = (props) => {
                             <label className="form-label" >Date:{""}</label>
                             <input
                                 className="form-control"
+                                placeholder={props.editInfo.date}
                                 type="date"
                                 name="date"
                                 value={editArray.date}
